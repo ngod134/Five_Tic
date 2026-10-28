@@ -1,0 +1,362 @@
+
+body {
+    font-family:'Times New Roman', Times, serif;
+}
+
+.main_div {
+    text-align: center;
+}
+
+h {
+    font-size: 60px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: var(--grid_template_col) var(--grid_template_col) var(--grid_template_col) var(--grid_template_col) var(--grid_template_col)
+                           var(--grid_template_col) var(--grid_template_col) var(--grid_template_col) var(--grid_template_col) var(--grid_template_col);
+    justify-content: center;
+    align-content: center;
+}
+
+.player_div {
+    display: grid;
+    grid-template-columns: 170px 170px 170px;
+    justify-content: center;
+    align-content: center;
+}
+
+.player1,
+.player2,
+.Tie_p_tag {
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding-top: 0px;
+    font-size: 22px;
+}
+.player1_score,
+.player2_score,
+.tie_score {
+    margin: 0px;
+    padding: 0px;
+}
+
+.player1_win,
+.player2_win,
+.tie {
+    font-size: 20px;
+    color: yellow;
+    font-weight: bold;
+    width: 106px;
+    margin-left: 32px;
+    margin-right: 32px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: x 1s linear infinite;
+    border-radius: 3px;
+}
+
+.player1_win {
+    background-color: var(--color);
+}
+
+.player2_win {
+    background-color: var(--color);
+}
+
+.tie {
+    background-color: var(--color);
+}
+
+
+@keyframes winner_animate {
+    0%, 25%, 75%, 100% {
+        color: yellow;
+        text-shadow: none;
+    }
+    12.5%, 50%,  87.5%{
+        color: #fff;
+        text-shadow: 0 0 10px yellow,
+                    0 0 20px yellow,
+                    0 0 40px yellow,
+                    0 0 80px yellow,
+                    0 0 160px yellow
+
+    }
+}
+
+
+/*input and p tag height/border*/
+.grid input {
+    height: 59px;
+    border: none;
+    border-left: solid 1px;
+    border-top: solid 1px;
+    padding: 0;
+}
+
+.grid p {
+    border-left: solid 1px;
+    border-top: solid 1px;
+    margin: 0;
+    padding: 0;
+    padding-top: 16px;
+    padding-bottom: 15px;
+    text-align: center;
+    font-size: 25px;
+    min-height: 28px;
+    
+}
+
+/*all bottom border for bottom p tag and input*/
+input:nth-child(n+91),
+p:nth-child(n+91) {
+    border-bottom: solid 1px;
+    height: 58px;
+}
+
+/*bottom p height adjustment*/
+p:nth-child(n+91) {
+    height: 26px;
+}
+
+/*all right border for outer right input and p tag*/
+input:nth-child(10n+10),
+p:nth-child(10n+10) {
+    border-right: solid 1px;
+}
+
+.new_game_button,
+.reset_button,
+.rule_button {
+    background-color: rgb(91, 241, 91);
+    font-size: 16px;
+    border: none;
+    height: 30px;
+    width:150px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.reset_button,
+.rule_button {
+    background-color: rgb(196, 193, 193);
+}
+
+.rule_tooltip {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0px;
+    right: 0px;
+    width: 225px;
+    left: 37%;
+    top: 6%;
+    background-color: rgb(141, 217, 247);
+    border-radius: 5px;
+    font-size: 18px;
+    border: none;
+    padding: 4px;
+    box-shadow: 3px 3px grey;
+    letter-spacing: .5px;
+    opacity: 0;
+    transition: 1s;
+}
+
+.rule_button:hover .rule_tooltip{
+    opacity: 1;
+    transition: 1s;
+}
+
+
+.new_restart_game_btn {
+    position: relative;
+    padding-top: 15px;
+    /*width: 1000px;*/
+}
+
+.popup_div {
+    position: absolute;
+    visibility: hidden;
+    background-color: rgb(204, 200, 200);
+    font-size: 10px;
+    top: var(--pop_up_top);
+    scale: 100%;
+    transition-duration: 500ms;
+    margin-left: auto;
+    margin-right: auto;
+    right: 0;
+    left: -590px;
+    width: 635px;
+    scale: .1%;
+    height: 100px;
+}
+
+
+.popup_js_hidden {
+    transition-duration: 500ms;
+    scale: 100%;
+    left: 0px;
+    visibility: visible;
+    
+}
+
+.player1_name_input,
+.player2_name_input {
+    text-align: left;
+    border: none;
+    background-color: rgb(204, 200, 200);
+    width: 155px;
+    font-size: 18px;
+    height: 40px;
+}
+
+.player1_list,
+.player1_turn,
+.player2_list,
+.player2_turn,
+.select_done_btn {
+    border: none;
+    text-align: center;
+    font-size: 18px;
+    width: 50px;
+    height: 42px;
+    background-color: rgb(204, 200, 200);
+}
+
+.player1_turn,
+.player2_turn {
+    width: 100px;
+}
+
+.select_done_btn {
+  width: 120px ;
+  background-color: rgb(141, 236, 141);
+  border: none;
+  margin: 0px;
+  padding: 0px;
+  cursor: pointer;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+
+.player_turn {
+    -webkit-animation: blink 1s infinite;
+}
+
+@-webkit-keyframes blink {
+    0%, 49% {
+        background-color: rgb(241, 241, 101);
+    }
+    50%, 100% {
+      background-color: rgb(185, 235, 85);
+    }
+  }
+
+.horizontal_line {
+    position: absolute;
+    background-color: red;
+    margin-right: auto;
+    margin-left: auto;
+    left: 0px;
+    right: 0px;
+    width: 0px;
+    left: var(--left);
+    top: var(--top);
+    height: 3px;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    animation-name: x;
+    
+}
+/**/
+@keyframes horizontal {
+    0% {
+        width: 0px;
+    }
+    100% {
+        width: 276px;
+
+    }
+  }
+
+.vertical_line {
+    position: absolute;
+    background-color: red;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0px;
+    right: 0;
+    min-height: 0px;
+    width: 3px;
+    left: var(--left);
+    top: var(--top); 
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    animation-name: x;
+}
+
+@keyframes vertical {
+    0% {
+        height: 0%;
+
+    }
+    100% {
+        height: 276px;
+    }
+  }
+
+.F_diagonal_line {
+    position: absolute;
+    background-color: red;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0px;
+    right: 0px;
+    width: 0px;
+    top: var(--top);
+    left: var(--left);
+    height: 3px;
+    margin-top: 0px;
+    transform: rotate(-.785rad);
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+
+@keyframes forward {
+    to {
+        width: 380px;
+        background-color: red;
+    }
+  }
+
+  .B_diagonal_line {
+    position: absolute;
+    background-color: red;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0px;
+    right: 0px;
+    width: 0px;
+    top: var(--top);
+    left: var(--left);
+    height: 3px;
+    margin-top: 0px;
+    transform: rotate(.785rad);
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+
+@keyframes backward {
+    to {
+        width: 380px;
+        background-color: red;
+    }
+  }
+  
